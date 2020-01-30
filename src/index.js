@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.json())
             .then(breeds => fetchBreeds(breeds))
 
+        ulFinder = document.getElementById("dog-breeds")
+        ulFinder.addEventListener('click', handleClick)
 
 })
 
@@ -30,10 +32,8 @@ function renderDogs(dogObject) {
 }
 
 function renderBreedList(breed){
-    // console.log(breed)
-    //build breed list
-    // let noComma = breed.forEach(breed => breed.replace(',', ''))
     let breedListItem = document.createElement("li")
+    
     
     ulContainer().appendChild(breedListItem)
     
@@ -50,6 +50,15 @@ function renderBreedList(breed){
     
 }
 
+function handleClick(e) {
+    let a = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+    let c = Math.floor(Math.random() * 256);
+    let textColor = "rgb(" + a + ", " + b + ", " + c + ")";
+    targetItem = e.target 
+    targetItem.style.color = textColor
+}
+
 //get elements
 function imgContainer(){
     return document.getElementById("dog-image-container")
@@ -59,23 +68,5 @@ function ulContainer(){
     return document.getElementById("dog-breeds")
 }
 
-// function renderBreedList(breed){
-//     console.log(breed)
-//     //build breed list
-//     // let noComma = breed.forEach(breed => breed.replace(',', ''))
-//     let breedListItem = document.createElement("li")
-//     let breedOrderedList = document.createElement("ol")
-//     let subBreedListItem = document.createElement("li")
-//     debugger
-//     // breedListItem.innerText = breed
-//     ulContainer().appendChild(breedListItem)
-//     breedListItem.appendChild(breedOrderedList)
-//     breedOrderedList.appendChild(subBreedListItem)
 
-//     while (breed[1].length > 0) {
-//         breedListItem.innerText = breed[0]
-//         subBreedListItem.innerText = breed[1]
-//         break
-//       }
-//     breedListItem.innerText = breed[0]
-// }
+
